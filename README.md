@@ -110,4 +110,9 @@ title = {HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network},
 booktitle = {Conference on Computer Vision and Pattern Recognition (CVPR)},  
 year = {2022}  
 }  
-
+```
+## Acknowledgements
+For this project, we relied on research code from:
+* [I2L-MeshNet_RELEASE](https://github.com/mks0601/I2L-MeshNet_RELEASE)
+* [Semi-Hand-Object](https://github.com/stevenlsw/Semi-Hand-Object)
+* [attention-module](https://github.com/Jongchan/attention-module)
