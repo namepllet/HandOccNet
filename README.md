@@ -89,8 +89,8 @@ python test.py --gpu 0-3 --test_epoch {test epoch}
 ```  
 to test HandOccNet on the GPU 0,1,2,3 with {test epoch}th epoch trained model. `--gpu 0,1,2,3` can be used instead of `--gpu 0-3`.
 
-* For the HO3D dataset, pred{test epoch}.zip will be generated in `output/result` folder. You can upload it to the codalab challenge(https://competitions.codalab.org/competitions/22485) and see the results.
-* Our pretrained model can be downloaded from [here](https://drive.google.com/drive/folders/1OlyV-qbzOmtQYdzV6dbQX4OtAU5ajBOa?usp=sharing)
+* For the HO3D dataset, pred{test epoch}.zip will be generated in `output/result` folder. You can upload it to the [codalab challenge](https://competitions.codalab.org/competitions/22485) and see the results.
+* Our trained model can be downloaded from [here](https://drive.google.com/drive/folders/1OlyV-qbzOmtQYdzV6dbQX4OtAU5ajBOa?usp=sharing)
 
 ## Results  
 Here I report the performance of the HandOccNet.
@@ -99,7 +99,7 @@ Here I report the performance of the HandOccNet.
 </p>
 
 <p align="center">
-<img src="assets/comparison_sota_DexYCB.png">
+<img src="asset/comparison_sota_DexYCB.png">
 </p>
 
 ## Reference (update soon) 
