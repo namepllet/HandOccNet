@@ -7,21 +7,21 @@ class Config:
     
     ## dataset
     # HO3D, DEX_YCB
-    trainset = 'DEX_YCB'
-    testset = 'DEX_YCB'
+    trainset = 'HO3D'
+    testset = 'HO3D'
     
     ## input, output
     input_img_shape = (256,256) 
     
     ## training config
     if trainset == 'HO3D':
-        lr_dec_epoch = [10*i for i in range(1,10)]
-        end_epoch = 100
+        lr_dec_epoch = [10*i for i in range(1,7)]
+        end_epoch = 70
         lr = 1e-4
         lr_dec_factor = 0.7
     elif trainset == 'DEX_YCB':
-        lr_dec_epoch = [i for i in range(1,50)]
-        end_epoch = 50
+        lr_dec_epoch = [i for i in range(1,25)]
+        end_epoch = 25
         lr = 1e-4
         lr_dec_factor = 0.9
     train_batch_size = 16 # per GPU
@@ -30,7 +30,7 @@ class Config:
     lambda_mano_pose = 10
     lambda_mano_shape = 0.1
     lambda_joints_img = 100
-    ckpt_freq = 1
+    ckpt_freq = 10
 
     ## testing config
     test_batch_size = 64
@@ -45,7 +45,7 @@ class Config:
     cur_dir = osp.dirname(os.path.abspath(__file__))
     root_dir = osp.join(cur_dir, '..')
     data_dir = osp.join(root_dir, 'data')
-    output_dir = osp.join(root_dir, 'output/{}'.format(trainset))
+    output_dir = osp.join(root_dir, 'output')
     model_dir = osp.join(output_dir, 'model_dump')
     vis_dir = osp.join(output_dir, 'vis')
     log_dir = osp.join(output_dir, 'log')
