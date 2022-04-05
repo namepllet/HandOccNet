@@ -1,7 +1,7 @@
 # HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network
 
 ## Introduction
-This repository is the offical [Pytorch](https://pytorch.org/) implementation of [HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network (CVPR 2022)]. Below is the overall pipeline of HandOccNet.
+This repository is the offical [Pytorch](https://pytorch.org/) implementation of [HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network (CVPR 2022)(https://arxiv.org/abs/2203.14564)]. Below is the overall pipeline of HandOccNet.
 ![overall pipeline](./asset/model.png)
 
 ## Quick demo (update soon)
@@ -104,7 +104,7 @@ Here I report the performance of the HandOccNet.
 
 ## Reference (update soon) 
 ```  
-@InProceedings{-,  
+@InProceedings{Park_2022_CVPR_HandOccNet,  
 author = {Park, JoonKyu and Oh, Yeonguk and Moon, Gyeongsik and Choi, Hongsuk and Lee, Kyoung Mu},  
 title = {HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network},  
 booktitle = {Conference on Computer Vision and Pattern Recognition (CVPR)},  
@@ -112,7 +112,7 @@ year = {2022}
 }  
 ```
 ## Acknowledgements
-For this project, we relied on research code from:
+For this project, we relied on research codes from:
 * [I2L-MeshNet_RELEASE](https://github.com/mks0601/I2L-MeshNet_RELEASE)
 * [Semi-Hand-Object](https://github.com/stevenlsw/Semi-Hand-Object)
 * [attention-module](https://github.com/Jongchan/attention-module)
