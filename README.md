@@ -9,8 +9,8 @@ This repository is the offical [Pytorch](https://pytorch.org/) implementation of
 * Download `snapshot_demo.pth.tar` from [here](https://drive.google.com/drive/folders/1OlyV-qbzOmtQYdzV6dbQX4OtAU5ajBOa?usp=sharing) and place at `demo` folder.
 * Prepare `input.jpg` at `demo` folder.
 * Download `MANO_RIGHT.pkl` from [here](https://mano.is.tue.mpg.de/) and place at `common/utils/manopth/mano/models`.
-* Go to `demo` folder and edit `bbox` in [here]().
-* run `python demo.py --gpu 0` if you want to run on gpu 0.
+* Go to `demo` folder and edit `bbox` in [here](https://github.com/namepllet/HandOccNet/blob/185492e0e5b08c47e37039c5d67e3f2b099a6f9e/demo/demo.py#L61).
+* Run `python demo.py --gpu 0` if you want to run on gpu 0.
 * You can see `hand_bbox.png`, `hand_image.png`, and `output.obj`.
 
 ## Directory
