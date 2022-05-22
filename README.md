@@ -4,7 +4,14 @@
 This repository is the offical [Pytorch](https://pytorch.org/) implementation of **[HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network (CVPR 2022)](https://arxiv.org/abs/2203.14564)**. Below is the overall pipeline of HandOccNet.
 ![overall pipeline](./asset/model.png)
 
-## Quick demo (update soon)
+## Quick demo
+* Install **[PyTorch](https://pytorch.org)** and Python >= 3.7.4 and run `sh requirements.sh`.
+* Download `snapshot_demo.pth.tar` from [here](https://drive.google.com/drive/folders/1OlyV-qbzOmtQYdzV6dbQX4OtAU5ajBOa?usp=sharing) and place at `demo` folder.
+* Prepare `input.jpg` at `demo` folder.
+* Download `MANO_RIGHT.pkl` from [here](https://mano.is.tue.mpg.de/) and place at `common/utils/manopth/mano/models`.
+* Go to `demo` folder and edit `bbox` in [here]().
+* run `python demo.py --gpu 0` if you want to run on gpu 0.
+* You can see `hand_bbox.png`, `hand_image.png`, and `output.obj`.
 
 ## Directory
 ### Root  
@@ -102,7 +109,7 @@ Here I report the performance of the HandOccNet.
 <img src="asset/comparison_sota_DexYCB.png">
 </p>
 
-## Reference (update soon) 
+## Reference
 ```  
 @InProceedings{Park_2022_CVPR_HandOccNet,  
 author = {Park, JoonKyu and Oh, Yeonguk and Moon, Gyeongsik and Choi, Hongsuk and Lee, Kyoung Mu},  
