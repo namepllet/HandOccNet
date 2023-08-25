@@ -6,6 +6,10 @@ import torch.backends.cudnn as cudnn
 from config import cfg
 from base import Tester
 
+# # TEMP 
+# from DEX_YCB import target_img_list_sum
+
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--gpu', type=str, dest='gpu_ids')
@@ -34,24 +38,38 @@ def main():
     tester._make_batch_generator()
     tester._make_model()
     
-    eval_result = {}
+    total_to_save = {}
     cur_sample_idx = 0
     for itr, (inputs, targets, meta_info) in enumerate(tqdm(tester.batch_generator)):
         
         # forward
         with torch.no_grad():
             out = tester.model(inputs, targets, meta_info, 'test')
-       
-        # save output
-        out = {k: v.cpu().numpy() for k,v in out.items()}
-        for k,v in out.items(): batch_size = out[k].shape[0]
-        out = [{k: v[bid] for k,v in out.items()} for bid in range(batch_size)]
+        
+        to_save = {'/'.join(name.split('/')[-4:]): 
+        [
+            out['mesh_coord_cam'][idx].cpu().numpy(),
+            out['joints_coord_cam'][idx].cpu().numpy(),
+            out['manojoints2cam'][idx].cpu().numpy(),
+            out['mano_pose_aa'][idx].cpu().numpy(),
+        ] for idx, name in enumerate(meta_info['img_path'])}
+        total_to_save.update(to_save)
 
-        # evaluate
-        tester._evaluate(out, cur_sample_idx)
-        cur_sample_idx += len(out)
-    
-    tester._print_eval_result(args.test_epoch)
+        # # sa25ve output
+        # out = {k: v.cpu().numpy() for k,v in out.items()}
+        # for k,v in out.items(): batch_size = out[k].shape[0]
+        # out = [{k: v[bid] for k,v in out.items()} for bid in range(batch_size)]
+
+        # # evaluate
+        # tester._evaluate(out, cur_sample_idx)
+        # cur_sample_idx += len(out)
+
+    np.save('DexYCB_testset_HandOccNet_pred_update05272023.npy', total_to_save)
+
+    # np.save('HO3Dv3_testset_HandOccNet_pred_update05252023.npy', total_to_save)
+
+
+    # tester._print_eval_result(args.test_epoch)
 
 if __name__ == "__main__":
     main()

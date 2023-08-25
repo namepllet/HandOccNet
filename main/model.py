@@ -42,6 +42,9 @@ class Model(nn.Module):
             out = {}
             out['joints_coord_cam'] = pred_mano_results['joints3d']
             out['mesh_coord_cam'] = pred_mano_results['verts3d']
+            out['manojoints2cam'] = pred_mano_results['manojoints2cam'] 
+            out['mano_pose_aa'] = pred_mano_results['mano_pose_aa']
+
             return out
 
 def init_weights(m):

@@ -29,14 +29,18 @@ class HO3D(torch.utils.data.Dataset):
         self.joints_name = ('Wrist', 'Index_1', 'Index_2', 'Index_3', 'Middle_1', 'Middle_2', 'Middle_3', 'Pinky_1', 'Pinky_2', 'Pinky_3', 'Ring_1', 'Ring_2', 'Ring_3', 'Thumb_1', 'Thumb_2', 'Thumb_3', 'Thumb_4', 'Index_4', 'Middle_4', 'Ring_4', 'Pinly_4')
     
     def load_data(self):
-        db = COCO(osp.join(self.annot_path, "HO3D_{}_data.json".format(self.data_split)))
-        
+        # db = COCO(osp.join(self.annot_path, "HO3D_{}_data.json".format(self.data_split)))
+        db = COCO(osp.join(self.annot_path, 'HO3Dv3_partial_test_multiseq_coco.json'))
+
         datalist = []
         for aid in db.anns.keys():
             ann = db.anns[aid]
             image_id = ann['image_id']
             img = db.loadImgs(image_id)[0]
-            img_path = osp.join(self.root_dir, self.data_split, img['file_name'])
+            # TEMP
+            # img_path = osp.join(self.root_dir, self.data_split, img['file_name'])
+            img_path = osp.join(self.root_dir, 'train', img['sequence_name'], 'rgb', img['file_name'])
+
             img_shape = (img['height'], img['width'])
             if self.data_split == 'train':
                 joints_coord_cam = np.array(ann['joints_coord_cam'], dtype=np.float32) # meter
@@ -53,8 +57,9 @@ class HO3D(torch.utils.data.Dataset):
                 data = {"img_path": img_path, "img_shape": img_shape, "joints_coord_cam": joints_coord_cam, "joints_coord_img": joints_coord_img,
                         "bbox": bbox, "cam_param": cam_param, "mano_pose": mano_pose, "mano_shape": mano_shape}
             else:
-                root_joint_cam = np.array(ann['root_joint_cam'], dtype=np.float32)
-                cam_param = {k:np.array(v, dtype=np.float32) for k,v in ann['cam_param'].items()}
+                # TEMP
+                root_joint_cam = np.zeros(0)# np.array(ann['root_joint_cam'], dtype=np.float32)
+                cam_param = np.zeros(0) # {k:np.array(v, dtype=np.float32) for k,v in ann['cam_param'].items()}
                 bbox = np.array(ann['bbox'], dtype=np.float32)
                 bbox = process_bbox(bbox, img['width'], img['height'], expansion_factor=1.5)
                 
@@ -114,7 +119,7 @@ class HO3D(torch.utils.data.Dataset):
             root_joint_cam = data['root_joint_cam']
             inputs = {'img': img}
             targets = {}
-            meta_info = {'root_joint_cam': root_joint_cam}
+            meta_info = {'root_joint_cam': root_joint_cam, 'img_path': img_path}
 
         return inputs, targets, meta_info
                   
