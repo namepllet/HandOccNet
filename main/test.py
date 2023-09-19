@@ -64,8 +64,7 @@ def main():
         # tester._evaluate(out, cur_sample_idx)
         # cur_sample_idx += len(out)
 
-    np.save('DexYCB_testset_HandOccNet_pred_update05272023.npy', total_to_save)
-
+    np.save('DexYCB_HandNeRF_novel_object_testset_HandOccNet_pred.npy', total_to_save)
     # np.save('HO3Dv3_testset_HandOccNet_pred_update05252023.npy', total_to_save)
 
 
