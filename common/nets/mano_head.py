@@ -194,7 +194,7 @@ class mano_regHead(nn.Module):
         pred_mano_pose_rotmat = rot6d2mat(pred_mano_pose_6d.view(-1, 6)).view(-1, 16, 3, 3).contiguous()
         pred_mano_shape = self.shape_reg(mano_features)
         pred_mano_pose = mat2aa(pred_mano_pose_rotmat.view(-1, 3, 3)).contiguous().view(-1, self.mano_pose_size)
-        pred_verts, pred_joints = self.mano_layer(th_pose_coeffs=pred_mano_pose, th_betas=pred_mano_shape)
+        pred_verts, pred_joints, pred_manojoints2cam = self.mano_layer(th_pose_coeffs=pred_mano_pose, th_betas=pred_mano_shape)
 
         pred_verts /= 1000
         pred_joints /= 1000
@@ -204,7 +204,9 @@ class mano_regHead(nn.Module):
             "joints3d": pred_joints,
             "mano_shape": pred_mano_shape,
             "mano_pose": pred_mano_pose_rotmat,
-            "mano_pose_aa": pred_mano_pose}
+            "mano_pose_aa": pred_mano_pose,
+            "manojoints2cam": pred_manojoints2cam    
+        }
 
         if gt_mano_params is not None:
             gt_mano_shape = gt_mano_params[:, self.mano_pose_size:]

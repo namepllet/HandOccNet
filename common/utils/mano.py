@@ -11,6 +11,8 @@ from manopth.manolayer import ManoLayer
 
 class MANO(object):
     def __init__(self):
+        # TEMP
+        self.left_layer = ManoLayer(mano_root=osp.join(cfg.mano_path, 'mano', 'models'), flat_hand_mean=False, use_pca=False, side='left') # load right hand MANO model
         self.layer = self.get_layer()
         self.vertex_num = 778
         self.face = self.layer.th_faces.numpy()

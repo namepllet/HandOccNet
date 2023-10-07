@@ -12,7 +12,9 @@ This repository is the offical [Pytorch](https://pytorch.org/) implementation of
 * Go to `demo` folder and edit `bbox` in [here](https://github.com/namepllet/HandOccNet/blob/185492e0e5b08c47e37039c5d67e3f2b099a6f9e/demo/demo.py#L61).
 * Run `python demo.py --gpu 0` if you want to run on gpu 0.
 * You can see `hand_bbox.png`, `hand_image.png`, and `output.obj`.
-
+* Run `python demo_fitting.py --gpu 0 --depth 0.5` if you want to get the hand mesh's translation from the camera. The depth argument is initialization for the optimization.
+* You can see `fitting_input_3d_mesh.json` that contains the translation and MANO parameters, `fitting_input_3dmesh.obj`, `fitting_input_2d_prediction.png`, and `fitting_input_projection.png`.
+  
 ## Directory
 ### Root  
 The `${ROOT}` is described as below.  
