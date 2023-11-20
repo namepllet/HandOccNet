@@ -1,0 +1,31 @@
+# Configuration for Cog ⚙️
+# Reference: https://github.com/replicate/cog/blob/main/docs/yaml.md
+
+build:
+  # set to true if your model requires a GPU
+  gpu: true
+
+  system_packages:
+  - "libosmesa6-dev"
+  - "freeglut3-dev"
+
+  # python version in the form '3.8' or '3.8.12'
+  python_version: "3.8"
+
+  python_packages:
+    - "numpy==1.17.4"
+    - "torch==1.9.1"
+    - "torchvision==0.10.1"
+    - "tqdm==4.64.0"
+    - "pycocotools==2.0.4"
+    - "pyrender==0.1.45"
+    - "chumpy==0.70"
+    - "einops==0.4.1"
+    - "opencv-python-headless==4.6.0.66"
+  # commands run after the environment is setup
+  run:
+    - "echo Done setting up environment!"
+   
+
+# predict.py defines how predictions are run on your model
+predict: "demo/predict.py:Predictor"

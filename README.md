@@ -4,6 +4,13 @@
 This repository is the offical [Pytorch](https://pytorch.org/) implementation of **[HandOccNet: Occlusion-Robust 3D Hand Mesh Estimation Network (CVPR 2022)](https://arxiv.org/abs/2203.14564)**. Below is the overall pipeline of HandOccNet.
 ![overall pipeline](./asset/model.png)
 
+## Web demo 
+:rocket: **Run model through Replicate's web demo here**:
+
+[Demo and Docker image on Replicate](https://replicate.com/namepllet/3d-hand-estimation)
+
+<a href="https://replicate.com/namepllet/3d-hand-estimation"><img src="https://replicate.com/namepllet/3d-hand-estimation/badge">
+
 ## Quick demo
 * Install **[PyTorch](https://pytorch.org)** and Python >= 3.7.4 and run `sh requirements.sh`.
 * Download `snapshot_demo.pth.tar` from [here](https://drive.google.com/drive/folders/1OlyV-qbzOmtQYdzV6dbQX4OtAU5ajBOa?usp=sharing) and place at `demo` folder.
