@@ -36,9 +36,9 @@ mano = MANO()
 # for key, val in target_img_list.items():
 #     target_img_list_sum.extend(val) 
 
-with open('/home/hongsuk.c/Projects/HandOccNet/main/novel_object_test_list.json', 'r') as f:
-    target_img_list_sum = json.load(f)
-print("TARGET LENGTH: ", len(target_img_list_sum))    
+#with open('/home/hongsuk.c/Projects/HandOccNet/main/novel_object_test_list.json', 'r') as f:
+#    target_img_list_sum = json.load(f)
+#print("TARGET LENGTH: ", len(target_img_list_sum))    
 
 class DEX_YCB(torch.utils.data.Dataset):
     def __init__(self, transform, data_split):
@@ -80,8 +80,8 @@ class DEX_YCB(torch.utils.data.Dataset):
                 data = {"img_path": img_path, "img_shape": img_shape, "joints_coord_cam": joints_coord_cam, "joints_coord_img": joints_coord_img,
                         "bbox": bbox, "cam_param": cam_param, "mano_pose": mano_pose, "mano_shape": mano_shape, "hand_type": hand_type}
             else:
-                if '/'.join(img_path.split('/')[-4:]) not in target_img_list_sum:
-                    continue
+#                if '/'.join(img_path.split('/')[-4:]) not in target_img_list_sum:
+#                    continue
 
 
 
